@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="About | Merwan SI TAYEB" description="About Merhene">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+			>
+				<img
+					width="1553"
+					height="873"
+					src="/assets/at-work.webp"
+					alt="Merwan's artwork generated with IA"
+				/>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						After a decade of distinguished service in the French Army, marked by valor and resilience as a war-wounded veteran, I have embarked on a transformative journey into the world of web development. My foray into becoming a full-stack developer is built upon the rigorous discipline, adaptability, and team spirit instilled through my military experiences.
+					</p>
+					<p>
+						Currently seeking an opportunity to leverage my burgeoning technical skills, I am eager to embrace a new adventure abroad. With a thirst for learning and a proven capacity for critical situation management, I am ready to bring my methodical approach and tested leadership to a forward-thinking team eager to innovate and grow together.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="content">
+					<p>· Associate's degree - Full Stack Web and Mobile Development Program</p>
+					<p>· Diploma of Access to University Studies</p>
+					<p>· 1st year of Professional Baccalaureate in Topographic Surveying</p>
+					<p>· Radio Navigator in Liaison Detachment, Observation, and Fire Support Coordination</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Soft skills</h2>
+				<div class="content">
+					<p>· Methodical</p>
+					<p>· Observant</p>
+					<p>· Rigorous</p>
+					<p>· Team-spirited</p>
+					<p>· Adaptable</p>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
