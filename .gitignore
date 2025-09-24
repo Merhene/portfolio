@@ -12,10 +12,16 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
 # environment variables
 .env
 .env.production
 
 # macOS-specific files
 .DS_Store
+
+# Large video files (too big for GitHub)
+public/assets/*.mp4
+public/assets/mymoody_video.mp4
+public/assets/SD_video.mp4
+
+.vercel

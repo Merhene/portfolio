@@ -253,3 +253,31 @@ h5 {
 		gap: 12rem;
 	}
 }
+
+.scroll-watcher {
+	height: 10px;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	background-color: lime;
+	width: 100%;
+	scale: 0 1;
+	transform-origin: left;
+
+	animation: scroll-watcher 1s linear;
+	animation-timeline: scroll();
+}
+
+@keyframes scroll-watcher {
+	to { scale: 1 1; }
+}
+
+
+img[data-astro-cid-lgkm4u2a] {
+	animation: fade-in linear;
+	animation-timeline: scroll();
+}
+@keyframes fade-in {
+	from {scale: .8; opacity: 0;}
+	to {scale: 1; opacity: 1;}
+}

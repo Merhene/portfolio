@@ -1,0 +1,22 @@
+# Ignore large video files during deployment
+public/assets/SD_video.mp4
+public/assets/mymoody_video.mp4
+
+# Ignore development files
+node_modules/
+.env
+.env.local
+.env.production
+
+# Ignore build artifacts (these will be regenerated)
+.astro/
+dist/
+
+# Ignore development tools
+.vscode/
+*.log
+.DS_Store
+
+# Keep documentation but ignore non-essential files
+README.md
+domain-setup-guide.md
