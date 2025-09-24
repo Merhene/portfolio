@@ -17,11 +17,17 @@ tags:
 
 This project involves the development of a web application for a popular tattoo artist based in Lyon, Stan Dottori. The goal is to provide an online portfolio and booking system, allowing clients to view Stan's work, learn about his style and what tattoos are available to be "inked" (flashes).
 
-<!-- Video temporarily unavailable during deployment optimization -->
-<div class="video-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 60px 20px; text-align: center; border-radius: 8px; color: white; margin: 20px 0;">
-  <h3>🎥 Demo Video</h3>
-  <p>Watch the Stan Dottori Tattoo Artist website demonstration</p>
-  <small>Video will be hosted on external platform for optimal performance</small>
+<!-- Responsive YouTube Video Embed -->
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/7_KycN9LRdE?si=X2kw8YztEl2YXKmI" 
+    title="Stan Dottori Tattoo Artist Website Demo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+  </iframe>
 </div>
 
 <h5>Front-end :</h5>

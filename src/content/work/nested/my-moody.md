@@ -17,11 +17,17 @@ tags:
 My Moody is an emotional journaling app designed to help individuals track their emotions in real-time. Inspired by the experience of a war veteran suffering from post-traumatic stress disorder (PTSD) and depression, the app aims to provide a safe space where users can record their feelings instantly. This allows them to keep an accurate log of their emotional state, which can be shared with a therapist or used for personal reflection.
 With My Moody, users can better understand and manage their emotions, and more importantly, maintain a record of how they felt during critical moments, even when these emotions are difficult to express later on. The app is especially valuable for those undergoing therapy or anyone seeking to improve their self-awareness and mental health management.
 
-<!-- Video temporarily unavailable during deployment optimization -->
-<div class="video-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 20px; text-align: center; border-radius: 8px; color: white; margin: 20px 0;">
-  <h3>🎥 Demo Video</h3>
-  <p>Watch the My Moody application demonstration</p>
-  <small>Video will be hosted on external platform for optimal performance</small>
+<!-- Responsive YouTube Video Embed -->
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
+  <iframe 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+    src="https://www.youtube.com/embed/hLyc1PlxEE8?si=ddEKnXdV0G0HQv7e" 
+    title="My Moody Application Demo" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+  </iframe>
 </div>
 
 <p><h5>Front-End: </h5>The user interface is built using <b>Twig</b> templates, <b>JavaScript</b>, and styled with <b>SCSS</b> for dynamic and responsive design.
