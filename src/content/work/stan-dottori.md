@@ -1,68 +1,63 @@
 ---
-title: Stan Dottori, Tattoo Artist
+title: Stan Dottori
+displayTitle: Stan Dottori — Tattoo Artist Website
 publishDate: 2020-03-02 00:00:00
 img: /assets/stock-1.jpg
-img_alt: Iridescent ripples of a bright blue and pink liquid with Stan Dottori's logo
+img_alt: Stan Dottori logo over iridescent blue and pink liquid
 description: |
-  PHP, Symfony, MySQL, Doctrine, JavaScript, SCSS, Twig, Composer, Yarn, EasyAdmin, Object-Oriented Programming, Relational database
+  Custom React website for a tattoo artist, featuring administrable galleries, bilingual content, scroll-based animations, and an independently managed homepage carousel.
+seoTitle: Stan Dottori — React Website | Merwan SI TAYEB
+seoDescription: A custom React and TypeScript website for tattoo artist Stan Dottori, with bilingual content, administrable galleries, and a homepage carousel managed through the administration interface.
+websiteUrl: https://standottori.com/
 tags:
-  - Full-stack
-  - Scrum
-  - OOP
+  - React
+  - TypeScript
+  - Vite
+  - Supabase
+  - i18next
+  - Vercel
 ---
 
-## Stan Dottori, Tattoo Artist
+## Project Overview
 
+I designed and deployed a custom website for Stan Dottori, a tattoo artist based in Lyon, to give him an online presence that reflects his artistic identity and a tool he can maintain independently.
 
+The project brings together a responsive interface, independently managed content, an interactive tattoo enquiry form, and hand-coded animations. From selecting tattoo placements on a body diagram to exploring the biography and YouTube sections, the interactions are tailored to the artist’s identity and the way visitors discover his work.
 
-This project involves the development of a web application for a popular tattoo artist based in Lyon, Stan Dottori. The goal is to provide an online portfolio and booking system, allowing clients to view Stan's work, learn about his style and what tattoos are available to be "inked" (flashes).
+## Content Management and Customisation
 
-<!-- Responsive YouTube Video Embed -->
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0;">
-  <iframe 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-    src="https://www.youtube.com/embed/7_KycN9LRdE?si=X2kw8YztEl2YXKmI" 
-    title="Stan Dottori Tattoo Artist Website Demo" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
-  </iframe>
-</div>
+Client autonomy was a central requirement. The administration interface allows Stan to manage his Tattoo, Flash, and Wallpaper galleries, update events, edit his biography in French and English, and maintain his contact details and social links.
 
-<h5>Front-end :</h5>
-The user interface is build with <b>Twig</b> template, and the animations are entirely built using <b>CSS</b>, inspired by tutorials from Kevin Powell and others. <b>JavaScript</b> is used only for the calendar feature.
-<h5>Back-end :</h5>
- The core functionality is powered by <b>PHP</b> with the <b>Symfony</b> framework. Data is managed using <b>Doctrine</b> with <b>MySQL</b> as the database system.
-<h5>Development Tools: </h5>
-<b>Composer</b> is used for PHP package management, and <b>Yarn</b> is employed for JavaScript dependencies.
-<h5>Admin Panel: </h5>
-The admin interface is powered by <b>EasyAdmin</b>, which simplifies the management of content for the tattoo artist.
-<h5>File Uploads:</h5>
-The application uses <b>VichUploader</b> to handle file uploads, making it easy for Stan to upload and manage images in his portfolio.
-<p><h5>Database Modeling</h5>
-The database structure for this app was designed using the <b>MERISE</b> methodology, ensuring a robust and scalable architecture. The process involved:
+The Wallpaper collection also feeds the homepage carousel. Updating these images allows him to refresh the website’s opening visual presentation through the administration interface.
 
-<b>MCD (Conceptual Data Model</b>): This step focused on defining the entities, attributes, and relationships required to model the moods and user interactions effectively.
-<br><br>
-<b>MLD (Logical Data Model): </b>The MCD was then translated into a more structured format, outlining primary keys, foreign keys, and detailed relationships. 
-<br><br>
-<b>MPD (Physical Data Model): </b>Finally, the MLD was converted into the actual implementation in MySQL, optimizing the tables for performance and reliability.
+This approach gives the artist control over the content that changes regularly, reducing the need for developer intervention for everyday updates.
 
-<h5>Wireframes, Mockups, and Prototypes</h5>
-To ensure an intuitive user experience, the interface design went through several stages of development using <b>Figma</b>:
+## Interactive Contact Form
 
-<b>Wireframes: </b>Initial low-fidelity wireframes were created to outline the basic structure and navigation flow of the application.
-<br><br>
-<b>Mockups: </b>These wireframes were then enhanced with color schemes, typography, and UI elements to create high-fidelity mockups that reflect the final look and feel.
-<br><br>
-<b>Prototypes: </b>Interactive prototypes were developed to simulate the user journey and test the overall usability before implementation.</p>
-<br>
+The contact form helps visitors describe their tattoo project through an interactive body diagram. They can select one or several body areas, with related selections combined into a larger placement where appropriate. Selecting both the upper and lower arm, for example, can be interpreted as a full sleeve.
 
-#### Improvements
+The form’s wording updates automatically according to the selected body areas, price option, and reason for contacting the artist. This keeps the questions relevant to the enquiry and helps visitors communicate their project more clearly.
 
-<h5>Pricing issue : </h5>
-If you watched the video, you may notice something's wrong with the pricing ! A correction will be made to ensure accurate pricing displays throughout EasyAdmin.
-<br>
-<h5> Online booking with payment integration:</h5>
-One of the next steps is to implement an online booking system that integrates payment processing. The goal is to allow clients to book appointments, pay directly via the platform, and have the appointments automatically added to the tattoo artist's calendar. This will streamline the booking process and create an automated management system for Stan.
+Implementing this behaviour required custom selection logic, rules for combining body areas, and coordinated updates between the diagram and the form text.
+
+## Custom Animations and Interactions
+
+I hand-coded the biography section’s unlocking interaction and scroll-driven animations, tailoring their behaviour to the content and the artist’s visual identity.
+
+The YouTube section also features hand-coded animations. Alongside the biography interactions, this work adds a layer of custom front-end development beyond the site’s layouts and content management features.
+
+## Technical Implementation
+
+The website is built with React and TypeScript, with Vite providing the development and build tooling. Supabase provides back-end services, and i18next handles internationalisation.
+
+The React interface connects public-facing pages with administrable content, allowing updates to appear in the relevant sections of the website. Responsive layouts and scroll-based animations support the presentation of the artist’s work across different screen sizes.
+
+The project also includes image optimisation to support the delivery of visual content. The website is deployed on Vercel with a custom domain.
+
+## In Development
+
+A Three.js-based 3D playground is currently in development to extend the website’s interactive experience.
+
+## Technology Stack
+
+React · TypeScript · Vite · Supabase · i18next · Vercel
