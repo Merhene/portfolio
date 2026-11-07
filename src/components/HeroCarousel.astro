@@ -1,0 +1,247 @@
+---
+import Icon from './Icon.astro';
+
+interface Slide {
+	src: string;
+	alt: string;
+	objectPosition?: string;
+}
+
+const slides: Slide[] = [
+	{
+		src: '/assets/portrait.webp',
+		alt: "Merwan's portrait in 3D without textures",
+		objectPosition: 'top',
+	},
+	{
+		src: '/assets/IMF.JPG',
+		alt: 'Merwan after finishing IRONMAN 70.3 Mont-Tremblant',
+		objectPosition: 'center',
+	},
+];
+---
+
+<hero-carousel class="hero-carousel" aria-roledescription="carousel" aria-label="Portrait photos">
+	<div class="viewport">
+		{
+			slides.map((slide, index) => (
+				<figure class="slide" data-index={index} data-active={index === 0 ? 'true' : 'false'} aria-hidden={index === 0 ? 'false' : 'true'}>
+					<img
+						src={slide.src}
+						alt={slide.alt}
+						width="480"
+						height="620"
+						loading={index === 0 ? 'eager' : 'lazy'}
+						decoding="async"
+						style={`object-position: ${slide.objectPosition ?? 'center'};`}
+					/>
+				</figure>
+			))
+		}
+	</div>
+
+	<div class="controls">
+		<button type="button" class="nav prev" data-action="prev" aria-label="Previous photo">
+			<Icon icon="arrow-left" size="1.25em" />
+		</button>
+		<div class="dots" role="tablist" aria-label="Choose photo">
+			{
+				slides.map((_, index) => (
+					<button
+						type="button"
+						class="dot"
+						role="tab"
+						aria-label={`Show photo ${index + 1}`}
+						aria-selected={index === 0 ? 'true' : 'false'}
+						data-active={index === 0 ? 'true' : 'false'}
+						data-index={index}
+					/>
+				))
+			}
+		</div>
+		<button type="button" class="nav next" data-action="next" aria-label="Next photo">
+			<Icon icon="arrow-right" size="1.25em" />
+		</button>
+	</div>
+</hero-carousel>
+
+<style>
+	.hero-carousel {
+		display: grid;
+		gap: 0.75rem;
+		width: 100%;
+	}
+
+	.viewport {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 5 / 4;
+		border-radius: 1.5rem;
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+		background: var(--gradient-subtle);
+	}
+
+	.slide {
+		position: absolute;
+		inset: 0;
+		margin: 0;
+		opacity: 0;
+		z-index: 0;
+		transition: opacity 500ms ease;
+	}
+
+	.slide[data-active='true'] {
+		opacity: 1;
+		z-index: 1;
+	}
+
+	.slide img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.controls {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+	}
+
+	.nav,
+	.dot {
+		border: 0;
+		cursor: pointer;
+		background: var(--gray-999);
+		color: var(--gray-200);
+		box-shadow: inset 0 0 0 1px var(--accent-overlay);
+		transition:
+			color var(--theme-transition),
+			background-color var(--theme-transition),
+			box-shadow var(--theme-transition);
+	}
+
+	.nav {
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 999rem;
+	}
+
+	.nav:hover,
+	.nav:focus-visible,
+	.dot:hover,
+	.dot:focus-visible {
+		color: var(--accent-text-over);
+		background: var(--accent-regular);
+		box-shadow: none;
+	}
+
+	.dots {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.dot {
+		width: 0.55rem;
+		height: 0.55rem;
+		padding: 0;
+		border-radius: 999rem;
+	}
+
+	.dot[data-active='true'] {
+		width: 1.1rem;
+		background: var(--accent-regular);
+		box-shadow: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.slide {
+			transition: none;
+		}
+	}
+
+	@media (min-width: 50em) {
+		.viewport {
+			aspect-ratio: 3 / 4;
+			border-radius: 4.5rem;
+		}
+	}
+</style>
+
+<script>
+	class HeroCarousel extends HTMLElement {
+		private index = 0;
+		private timer: number | undefined;
+		private readonly intervalMs = 5000;
+
+		connectedCallback() {
+			if (this.dataset.ready === 'true') return;
+			this.dataset.ready = 'true';
+
+			const slides = [...this.querySelectorAll<HTMLElement>('.slide')];
+			const dots = [...this.querySelectorAll<HTMLButtonElement>('.dot')];
+			const prev = this.querySelector<HTMLButtonElement>('[data-action="prev"]');
+			const next = this.querySelector<HTMLButtonElement>('[data-action="next"]');
+
+			const show = (nextIndex: number) => {
+				this.index = (nextIndex + slides.length) % slides.length;
+
+				slides.forEach((slide, i) => {
+					const active = i === this.index;
+					slide.dataset.active = active ? 'true' : 'false';
+					slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+				});
+
+				dots.forEach((dot, i) => {
+					const active = i === this.index;
+					dot.dataset.active = active ? 'true' : 'false';
+					dot.setAttribute('aria-selected', active ? 'true' : 'false');
+				});
+			};
+
+			const start = () => {
+				window.clearInterval(this.timer);
+				if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+				this.timer = window.setInterval(() => show(this.index + 1), this.intervalMs);
+			};
+
+			const stop = () => window.clearInterval(this.timer);
+
+			prev?.addEventListener('click', () => {
+				show(this.index - 1);
+				start();
+			});
+			next?.addEventListener('click', () => {
+				show(this.index + 1);
+				start();
+			});
+			dots.forEach((dot) => {
+				dot.addEventListener('click', () => {
+					show(Number(dot.dataset.index));
+					start();
+				});
+			});
+
+			this.addEventListener('mouseenter', stop);
+			this.addEventListener('mouseleave', start);
+			this.addEventListener('focusin', stop);
+			this.addEventListener('focusout', start);
+
+			show(0);
+			start();
+		}
+
+		disconnectedCallback() {
+			window.clearInterval(this.timer);
+		}
+	}
+
+	if (!customElements.get('hero-carousel')) {
+		customElements.define('hero-carousel', HeroCarousel);
+	}
+</script>

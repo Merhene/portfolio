@@ -5,18 +5,27 @@ import Icon from './Icon.astro';
 <section class="box skills">
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Full Stack</h2>
-		<p>Java, PHP, Angular, Spring, Laravel, Symfony, MySQL, JavaScript, TypeScript, Html, Css, Git / Github</p>
+		<h2>Front-End Focused</h2>
+		<p>
+			Building interactive interfaces with React, Vue.js, Nuxt, and TypeScript, supported by hands-on
+			experience with Laravel, Symfony, and relational databases.
+		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Currently learning</h2>
-		<p>Node.js, React, Python, and Docker</p>
+		<Icon icon="rocket-launch" color="var(--accent-regular)" size="2.5rem" gradient />
+		<h2>Currently Exploring</h2>
+		<p>
+			Application architecture, deployment workflows, and maintainability — taking projects beyond
+			individual features and understanding how they fit together, ship, and evolve.
+		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Strategy-Minded</h2>
-		<p>Scrum, Object-Oriented Programming</p>
+		<h2>How I Work</h2>
+		<p>
+			Breaking down complex problems, building reusable components, and checking behaviour through
+			testing. Familiar with Scrum and object-oriented programming.
+		</p>
 	</div>
 </section>
 
@@ -35,12 +44,19 @@ import Icon from './Icon.astro';
 		gap: 3rem;
 	}
 
+	.skills > :global(.stack) {
+		min-width: 0;
+	}
+
 	.skills h2 {
 		font-size: var(--text-lg);
+		line-height: 1.25;
 	}
 
 	.skills p {
 		color: var(--gray-400);
+		line-height: 1.65;
+		max-width: 36ch;
 	}
 
 	@media (min-width: 50em) {
@@ -51,12 +67,17 @@ import Icon from './Icon.astro';
 
 		.skills {
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 3.5rem;
+			align-items: start;
 		}
 
 		.skills h2 {
 			font-size: var(--text-2xl);
+		}
+
+		.skills p {
+			max-width: none;
 		}
 	}
 </style>

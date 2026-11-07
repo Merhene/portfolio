@@ -1,7 +1,8 @@
 ---
 title: Stan Dottori
 displayTitle: Stan Dottori — Tattoo Artist Website
-publishDate: 2020-03-02 00:00:00
+typeLabel: Freelance
+publishDate: 2020-03-04 00:00:00
 img: /assets/stock-1.jpg
 img_alt: Stan Dottori logo over iridescent blue and pink liquid
 description: |

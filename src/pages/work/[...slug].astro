@@ -30,6 +30,7 @@ const pageTitle = entry.data.seoTitle ?? entry.data.title;
 const pageDescription = entry.data.seoDescription ?? entry.data.description;
 const heroTitle = entry.data.displayTitle ?? entry.data.title;
 const websiteUrl = entry.data.websiteUrl;
+const typeLabel = entry.data.typeLabel;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -38,6 +39,7 @@ const websiteUrl = entry.data.websiteUrl;
 			<header>
 				<div class="wrapper stack gap-2">
 					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
+					{typeLabel && <p class="type-label">{typeLabel}</p>}
 					<Hero title={heroTitle} align="start">
 						<div class="details">
 							<div class="tags">
@@ -78,6 +80,14 @@ const websiteUrl = entry.data.websiteUrl;
 
 	.back-link {
 		display: none;
+	}
+
+	.type-label {
+		margin: 0;
+		color: var(--gray-300);
+		font-size: var(--text-sm);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
 	}
 
 	.details {
@@ -137,6 +147,16 @@ const websiteUrl = entry.data.websiteUrl;
 		padding-inline-start: 1.5rem;
 		border-inline-start: 0.25rem solid var(--accent-dark);
 		color: var(--gray-0);
+	}
+
+	.content :global(hr) {
+		border: 0;
+		border-top: 1px solid var(--gray-800);
+		margin: 2.5rem 0 1.5rem;
+	}
+
+	.content :global(#onboarding-project--recipevault) {
+		font-size: var(--text-lg);
 	}
 
 	.back-link,
